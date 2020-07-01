@@ -1,0 +1,9 @@
+<nav *ngIf ="!ocultarNav">
+  <ul>
+    <li><a href="#">Crear Persona</a></li>
+    <li><a href="#">Crear Tipo de Trabajo</a></li>
+    <li><a href="#">Subir Experiencia Laboral</a></li>
+    <li><button type="button" (click)="onCerrarSesion()">Cerrar Sesion</button></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

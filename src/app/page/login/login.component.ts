@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private user: any = { usuario: "jolubamo", clave: "123456" };
+  private user: any = { usuario: "admin", clave: "1234" };
   form: FormGroup;
 
   constructor(

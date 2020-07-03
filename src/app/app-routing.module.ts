@@ -5,6 +5,9 @@ import { PersonaComponent } from './page/persona/persona.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { TipoTrabajoComponent } from './page/tipo-trabajo/tipo-trabajo.component';
 import { ExperienciaLaboralComponent } from './page/experiencia-laboral/experiencia-laboral.component';
+import { ViewExperienciaLaboralComponent } from './page/view-experiencia-laboral/view-experiencia-laboral.component';
+import { ViewPersonaComponent } from './page/view-persona/view-persona.component';
+import { ViewTrabajoComponent } from './page/view-trabajo/view-trabajo.component';
 
 
 
@@ -31,6 +34,18 @@ const routes: Routes = [
   {
     path: 'experiencia-laboral',
     component: ExperienciaLaboralComponent
+  },
+  {
+    path: 'view-experiencia-laboral',
+    component: ViewExperienciaLaboralComponent
+  },
+  {
+    path: 'view-persona',
+    component: ViewPersonaComponent
+  },
+  {
+    path: 'view-trabajo',
+    component: ViewTrabajoComponent
   },
   {
     path: '**', redirectTo: '404-not-found'

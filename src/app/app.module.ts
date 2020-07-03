@@ -19,6 +19,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { TipoTrabajoComponent } from './page/tipo-trabajo/tipo-trabajo.component';
 import { ExperienciaLaboralComponent } from './page/experiencia-laboral/experiencia-laboral.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { ViewExperienciaLaboralComponent } from './page/view-experiencia-laboral/view-experiencia-laboral.component';
+import { ViewPersonaComponent } from './page/view-persona/view-persona.component';
+import { ViewTrabajoComponent } from './page/view-trabajo/view-trabajo.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -29,6 +34,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     NotFoundComponent,
     TipoTrabajoComponent,
     ExperienciaLaboralComponent,
+    ViewExperienciaLaboralComponent,
+    ViewPersonaComponent,
+    ViewTrabajoComponent
 
   ],
   imports: [
@@ -44,7 +52,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatIconModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTableModule,
+    MatPaginatorModule
 
   ],
   providers: [],

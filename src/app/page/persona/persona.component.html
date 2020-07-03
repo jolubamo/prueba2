@@ -47,7 +47,7 @@
       <ng-template matStepLabel>Confirm your information</ng-template>
       Everything seems correct.
       <div>
-        <button mat-button>Done</button>
+        <button mat-button (click)='clickenviar()'>Done</button>
         <button type="button" mat-button (click)="linearVerticalStepper.reset()">Reset</button>
       </div>
     </mat-step>

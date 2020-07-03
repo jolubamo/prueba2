@@ -1,47 +1,106 @@
+<!--<form [formGroup]="form">
+  <br>
+  <div>
+    <mat-form-field color="accent" appearance="fill">
+      <mat-label>Fecha Inicial</mat-label>
+      <input matInput formControlName="fechaInicio" [matDatepicker]="picker1">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field color="accent" appearance="fill">
+      <mat-label>Fecha Final</mat-label>
+      <input matInput formControlName="fechaFin" [matDatepicker]="picker2">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div>
+    <h4>Codigo</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <mat-select [(ngModel)]="variable" formControlName="perCodigo">
+        <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Selected code: {{variable}} </p>
+
+  </div>
+  <div>
+    <h4>Codigo</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <mat-select [(ngModel)]="variable2" formControlName="titCodigo">
+        <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Selected code: {{variable2}} </p>
+
+  </div>
+  <br>
+  <div>
+    <button [disabled]="!form.valid" (click)='clickenviar()' mat-fab color="primary">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</form>-->
+<!--Divisor-->
 <form [formGroup]="form">
-    <br>
-    <div>
-        <mat-form-field color="accent" appearance="fill">
-            <mat-label>Fecha Inicial</mat-label>
-            <input   matInput formControlName="fechaInicio" [matDatepicker]="picker1">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-          
-          <mat-form-field color="accent" appearance="fill">
-            <mat-label>Fecha Final</mat-label>
-            <input   matInput formControlName="fechaFin" [matDatepicker]="picker2">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2 color="primary"></mat-datepicker>
-          </mat-form-field>
-          
-    </div>
-    <div>
-        <h4>Codigo</h4>
-        <mat-form-field appearance="fill">
-          <mat-label>Favorite food</mat-label>
-          <mat-select [(ngModel)]="variable" formControlName="perCodigo">
-            <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <p> Selected code: {{variable}} </p>
-        
-    </div>
-    <div>
-        <h4>Codigo</h4>
-        <mat-form-field appearance="fill">
-          <mat-label>Favorite food</mat-label>
-          <mat-select [(ngModel)]="variable2" formControlName="titCodigo">
-            <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <p> Selected code: {{variable2}} </p>
-        
-    </div>
-    <br>
-    <div>
-        <button [disabled]="!form.valid" (click)='clickenviar()' mat-fab color="primary">
-            <mat-icon>send</mat-icon>
-        </button>
-    </div>
+  <mat-vertical-stepper #linearVerticalStepper="matVerticalStepper" formArrayName="formArray" [linear]="false">
+    <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field color="accent" appearance="fill">
+        <mat-label>Fecha Inicial</mat-label>
+        <input matInput formControlName="fechaInicioFormControl" [matDatepicker]="picker1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field color="accent" appearance="fill">
+        <mat-label>Fecha Final</mat-label>
+        <input matInput formControlName="fechaFinFormControl" [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+      <ng-template matStepLabel>
+        <div>Fill out your email address</div>
+      </ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select [(ngModel)]="variable" formControlName="perCodigoFormControl">
+          <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p> Selected code: {{variable}} </p>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select [(ngModel)]="variable2" formControlName="titCodigoFormControl">
+          <mat-option *ngFor="let p of lstcodigo" [value]="p.codigo"> {{p.nombre}} </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p> Selected code: {{variable2}} </p>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Confirm your information</ng-template>
+      Everything seems correct.
+      <div>
+        <button mat-button (click)='clickenviar()'>Done</button>
+        <button type="button" mat-button (click)="linearVerticalStepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </form>

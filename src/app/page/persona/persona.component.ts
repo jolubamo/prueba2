@@ -23,10 +23,9 @@ export class PersonaComponent implements OnInit {
 
 
   /** Returns a FormArray with the name 'formArray'. */
-  get formArray(): AbstractControl | null { return this.formGroup.get('formArray'); }
+  get formArray(): AbstractControl | null { return this.form.get('formArray'); }
   constructor(
     private fb: FormBuilder,
-    private _formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -41,34 +40,19 @@ export class PersonaComponent implements OnInit {
         }),
         this.fb.group({
           identificacionFormControl: ['', Validators.required],
-          fechaNacimientoFormControl: ['', Validators.required]
+          fechaNacimientoFormControl: ['', Validators.required],
         }),
       ])
     })
-
-
-
-
-
-    this.formGroup = this._formBuilder.group({
-      formArray: this._formBuilder.array([
-        this._formBuilder.group({
-          firstNameFormCtrl: ['', Validators.required],
-          lastNameFormCtrl: ['', Validators.required]
-        }),
-        this._formBuilder.group({
-          emailFormCtrl: ['', Validators.email]
-        }),
-      ])
-    });
   }
 
 
 
   clickenviar(): void {
     console.log("enviando...")
-    this.fechai = this.form.get('fechaNacimiento').value;
+    this.fechai = this.formArray.get([1]).get('fechaNacimientoFormControl').value;
     this.fechafi = moment(this.fechai, 'MM DD YYYY').format('YYYY-MM-DD');
+    console.log(this.fechafi);
   }
 
 

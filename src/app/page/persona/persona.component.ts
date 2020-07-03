@@ -15,9 +15,6 @@ export class PersonaComponent implements OnInit {
   form: FormGroup;
   fechai: Date;
   fechafi: string = '';
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
 
   formGroup: FormGroup;
 
@@ -37,34 +34,32 @@ export class PersonaComponent implements OnInit {
   }
   private initForm(): void {
     this.form = this.fb.group({
-      nombreFormControl:['', Validators.required],
-      apellidoFormControl:['', Validators.required]
-    }),
-      this.fb, group({
-        identificacionFormControl:['', Validators.required],
-        fechaNacimientoFormControl:['', Validators.required]
-      })
+      formArray: this.fb.array([
+        this.fb.group({
+          nombreFormControl: ['', Validators.required],
+          apellidoFormControl: ['', Validators.required]
+        }),
+        this.fb.group({
+          identificacionFormControl: ['', Validators.required],
+          fechaNacimientoFormControl: ['', Validators.required]
+        }),
+      ])
+    })
+
+
+
 
 
     this.formGroup = this._formBuilder.group({
       formArray: this._formBuilder.array([
         this._formBuilder.group({
           firstNameFormCtrl: ['', Validators.required],
-          lastNameFormCtrl: ['', Validators.required],
+          lastNameFormCtrl: ['', Validators.required]
         }),
         this._formBuilder.group({
           emailFormCtrl: ['', Validators.email]
         }),
       ])
-    });
-
-    this.nameFormGroup = this._formBuilder.group({
-      firstNameCtrl: ['', Validators.required],
-      lastNameCtrl: ['', Validators.required],
-    });
-
-    this.emailFormGroup = this._formBuilder.group({
-      emailCtrl: ['', Validators.email]
     });
   }
 
